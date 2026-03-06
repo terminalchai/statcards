@@ -8,6 +8,5 @@ dist/
 Thumbs.db
 test-results/
 playwright-report/
-ux-desktop.png
-ux-tablet.png
-ux-mobile.png
+ux-*.png
+ux-audit.js
