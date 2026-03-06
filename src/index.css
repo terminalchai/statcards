@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface-950: #07071a;
+  --color-surface-900: #0d0d20;
+  --color-surface-850: #12122a;
+  --color-surface-800: #181832;
+  --color-surface-700: #23234a;
+  --color-surface-600: #30305e;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: var(--color-surface-950);
+  color: #d8d8e8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+#root { height: 100%; }
+
+/* Scrollbar */
+::-webkit-scrollbar            { width: 4px; height: 4px; }
+::-webkit-scrollbar-track      { background: transparent; }
+::-webkit-scrollbar-thumb      { background: rgba(255,255,255,0.07); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.14); }
+
+/* ── Canvas area — dot grid ─────────────────────────────────────────── */
+.canvas-bg {
+  background-color: var(--color-surface-950);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 25% 50%, rgba(99,102,241,0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(168,85,247,0.04) 0%, transparent 65%),
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: auto, auto, 28px 28px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--color-surface-900);
+}
+
+/* Section groups */
+.ctrl-group {
+  padding: 20px 20px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ctrl-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 14px;
+}
+
+.field-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* Search input */
+.search-input {
+  width: 100%;
+  min-height: 48px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0 54px 0 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  outline: none;
+  transition: border-color 0.18s, background-color 0.18s, box-shadow 0.18s;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.search-input::placeholder { color: rgba(255,255,255,0.2); }
+.search-input:hover  { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); }
+.search-input:focus  { border-color: rgba(99,102,241,0.6); background: rgba(99,102,241,0.04); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+
+/* Theme swatches */
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.theme-btn {
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+.theme-btn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: transparent;
+  border-radius: 8px 0 0 8px;
+  transition: background 0.15s;
+}
+
+.theme-btn:hover { border-color: rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.theme-btn.selected { border-color: rgba(99,102,241,0.45); background: rgba(99,102,241,0.09); box-shadow: 0 0 0 1px rgba(99,102,241,0.2) inset; }
+.theme-btn.selected::before { background: linear-gradient(to bottom, #6366f1, #a855f7); }
+
+.theme-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.theme-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Export buttons */
+.btn-export-primary {
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+}
+.btn-export-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.5);
+}
+.btn-export-primary:active:not(:disabled) { transform: translateY(0); }
+
+.btn-ghost {
+  transition: background 0.12s, color 0.12s, transform 0.1s;
+}
+.btn-ghost:hover  { transform: translateY(-1px); }
+.btn-ghost:active { transform: translateY(0); }
+
+/* ── Focus indicators ─────────────────────────────────────────────────── */
+button:focus-visible      { outline: 2px solid rgba(99,102,241,0.75); outline-offset: 2px; border-radius: 8px; }
+a:focus-visible           { outline: 2px solid rgba(99,102,241,0.75); outline-offset: 2px; border-radius: 6px; }
+input:focus-visible       { outline: 2px solid rgba(99,102,241,0.6);  outline-offset: 2px; border-radius: 10px; }
+.theme-btn:focus-visible  { outline: 2px solid rgba(99,102,241,0.6);  outline-offset: 2px; }
+.search-input:focus-visible { outline: none; } /* ring handled by box-shadow on :focus */
+
+/* ── Card entrance animation ───────────────────────────────────────────── */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-enter {
+  animation: card-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Skeleton shimmer animation ────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.04) 100%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: 6px;
+}
+
+/* ── Logo shimmer ──────────────────────────────────────────────────────── */
+@keyframes logo-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(99,102,241,0.08); }
+}
+.logo-icon {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
