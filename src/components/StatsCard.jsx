@@ -28,8 +28,8 @@ function StatPill({ label, value, theme }) {
         fontSize:      10,
         color:         theme.textMuted,
         textTransform: 'uppercase',
-        letterSpacing: '0.07em',
-        fontWeight:    600,
+        letterSpacing: '0.08em',
+        fontWeight:    700,
       }}>
         {label}
       </span>
@@ -84,7 +84,7 @@ const StatsCard = forwardRef(function StatsCard({ data, theme }, ref) {
             />
           </div>
           <span style={{
-            fontSize:   13,
+            fontSize:   14,
             fontWeight: 700,
             color:      theme.text,
             textAlign:  'center',
@@ -93,11 +93,11 @@ const StatsCard = forwardRef(function StatsCard({ data, theme }, ref) {
           }}>
             {data.name}
           </span>
-          <span style={{ fontSize: 11, color: theme.accent, marginTop: 4, opacity: 0.9 }}>
+          <span style={{ fontSize: 12, color: theme.accent, marginTop: 4, fontWeight: 600, opacity: 0.9 }}>
             @{data.username}
           </span>
           {data.location && (
-            <span style={{ fontSize: 10, color: theme.textMuted, marginTop: 6, textAlign: 'center' }}>
+            <span style={{ fontSize: 11, color: theme.textMuted, marginTop: 6, textAlign: 'center', lineHeight: 1.4 }}>
               📍 {data.location}
             </span>
           )}
@@ -110,7 +110,7 @@ const StatsCard = forwardRef(function StatsCard({ data, theme }, ref) {
           {data.bio && (
             <p style={{
               margin:               0,
-              fontSize:             12,
+              fontSize:             13,
               color:                theme.textMuted,
               lineHeight:           1.55,
               display:              '-webkit-box',
