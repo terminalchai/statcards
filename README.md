@@ -2,7 +2,7 @@
 
 > Generate beautiful GitHub stats cards — enter a username, pick a theme, export as PNG.
 
-**[🚀 Live Demo → Coming Soon](#)**
+**[🚀 Live Demo → statcards.vercel.app](https://statcards.vercel.app/)**
 
 ---
 

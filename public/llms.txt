@@ -1,0 +1,29 @@
+# StatCards
+
+> Generate beautiful GitHub stats cards — enter a username, pick a theme, export as PNG.
+
+## What it does
+StatCards fetches any public GitHub profile using the GitHub REST API and renders a
+polished stats card with avatar, bio, stars, repos, forks, PRs, followers, and a
+language breakdown bar. The card can be exported as a high-resolution PNG or copied
+directly to the clipboard — with zero backend, no API key, and no uploads.
+
+## Live app
+https://statcards.vercel.app/
+
+## Source code
+https://github.com/terminalchai/statcards
+
+## Tech stack
+- React 19 + Vite 7
+- Tailwind CSS v4
+- html-to-image (PNG/clipboard export)
+- GitHub REST API (public endpoints, no auth)
+- Playwright (42 automated tests across 3 viewports)
+- Space Grotesk font
+
+## Themes
+Midnight, Dracula, GitHub Dark, Tokyo Night, Nord, Solarized
+
+## Author
+Terminal Chai — https://github.com/terminalchai
